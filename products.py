@@ -1,12 +1,19 @@
-# read file
+import os # operating system
+
+# read file or creat file
 products = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-	for line in f:
-		if 'Product,Price' in line:
-			continue
-		name, price = line.strip().split(',')
-		products.append([name, price])
-print(products)
+if os.path.isfile('products.csv'): # 相對路徑 # os is a module, path is another module
+	print('Yeah! We found it!')
+	with open('products.csv', 'r', encoding='utf-8') as f:
+		for line in f:
+			if 'Product,Price' in line:
+				continue
+			name, price = line.strip().split(',')
+			products.append([name, price])
+	print(products)
+
+else:
+	print('We cannot find it......')
 
 # enter notes by user
 while True:
